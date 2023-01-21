@@ -1,0 +1,20 @@
+
+
+ *** Results summary for CNN model: RESNET ***
+N Images: 40  N Dog Images: 30  N NotDog Images: 10
+
+Pct Corr dog: 100.0,  Pct Corr Breed:  90.0,  Pct Corr NOT dog:  90.0,  Pct Corr Match:  82.5
+
+--> Misclassified dogs:
+
+Pet Image Label: cat,  Classifier Label: norwegian elkhound, elkhound
+
+--> Misclassified breeds:
+
+Pet Image Label: beagle,  Classifier Label: walker hound, walker foxhound
+
+Pet Image Label: golden retriever,  Classifier Label: leonberg
+
+Pet Image Label: great pyrenees,  Classifier Label: kuvasz
+
+** Total Elapsed Runtime: 0:0:2

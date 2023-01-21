@@ -1,0 +1,22 @@
+
+
+ *** Results summary for CNN model: ALEXNET ***
+N Images: 40  N Dog Images: 30  N NotDog Images: 10
+
+Pct Corr dog: 100.0,  Pct Corr Breed:  80.0,  Pct Corr NOT dog: 100.0,  Pct Corr Match:  75.0
+
+--> Misclassified breeds:
+
+Pet Image Label: beagle,  Classifier Label: walker hound, walker foxhound
+
+Pet Image Label: boston terrier,  Classifier Label: basenji
+
+Pet Image Label: beagle,  Classifier Label: english foxhound
+
+Pet Image Label: golden retriever,  Classifier Label: tibetan mastiff
+
+Pet Image Label: great pyrenees,  Classifier Label: kuvasz
+
+Pet Image Label: golden retriever,  Classifier Label: afghan hound, afghan
+
+** Total Elapsed Runtime: 0:0:1

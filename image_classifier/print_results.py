@@ -3,8 +3,8 @@
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
 # PROGRAMMER: 
-# DATE CREATED:
-# REVISED DATE: 
+# DATE CREATED: David Bain
+# REVISED DATE: 21 Jan 2023
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
 #          should also allow the user to be able to print out cases of misclassified
@@ -31,8 +31,8 @@
 #       Notice that this function doesn't to return anything because it  
 #       prints a summary of the results using results_dic and results_stats_dic
 # 
-def print_results(results_dic, results_stats_dic, model, 
-                  print_incorrect_dogs = False, print_incorrect_breed = False):
+def print_results(results_dic, results_stats_dic, model,
+                  print_incorrect_dogs, print_incorrect_breed):
     """
     Prints summary results on the classification and then prints incorrectly 
     classified dogs and incorrectly classified dog breeds if user indicates 
@@ -61,6 +61,28 @@ def print_results(results_dic, results_stats_dic, model,
                               False doesn't print anything(default) (bool) 
     Returns:
            None - simply printing results.
-    """    
-    None
-                
+    """
+
+    print(f"\n\n *** Results summary for CNN model: {model.upper()} ***")
+    print("N Images: {:2d}  N Dog Images: {:2d}  N NotDog Images: {:2d}".format(
+        results_stats_dic['n_images'], results_stats_dic['n_dogs_img'], results_stats_dic['n_notdogs_img']))
+
+    print("\nPct Corr dog: {:5.1f},  Pct Corr Breed: {:5.1f},  Pct Corr NOT dog: {:5.1f},  Pct Corr Match: {:5.1f}".format(
+        results_stats_dic['pct_correct_dogs'],
+        results_stats_dic['pct_correct_breed'],
+        results_stats_dic['pct_correct_notdogs'],
+        results_stats_dic['pct_match']))
+
+    misclassified_dogs = (results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images'])
+    if misclassified_dogs and print_incorrect_dogs:
+        print("\n--> Misclassified dogs:")
+        for key in results_dic:
+            if sum(results_dic[key][3:]) == 1:
+                print("\nPet Image Label: {},  Classifier Label: {}".format(results_dic[key][0], results_dic[key][1]))
+
+    misclassified_breeds = (results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed'])
+    if print_incorrect_breed and misclassified_breeds:
+        print("\n--> Misclassified breeds:")
+        for key in results_dic:
+            if (sum(results_dic[key][3:]) == 2) and (results_dic[key][2] == 0):
+                print("\nPet Image Label: {},  Classifier Label: {}".format(results_dic[key][0], results_dic[key][1]))

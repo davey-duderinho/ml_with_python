@@ -39,10 +39,19 @@ def get_input_args():
      parse_args() -data structure that stores the command line arguments object  
     """
     # Create Parse using ArgumentParser
-    
+    parser = argparse.ArgumentParser(prog='Image Classifier', description='Input images to determine dogs')
     # Create 3 command line arguments as mentioned above using add_argument() from ArguementParser method
+    parser.add_argument('--dir',
+                        default='pet_images',
+                        type=str,
+                        help='directory of pet images (default: pet_images)')
+    parser.add_argument('--arch',
+                        default='vgg',
+                        type=str,
+                        help='CNN Model Architecture')
+    parser.add_argument('--dogfile',
+                        default='dognames.txt',
+                        type=str,
+                        help='Text file with dog names')
     
-    
-    # Replace None with parser.parse_args() parsed argument collection that 
-    # you created with this function 
-    return None
+    return parser.parse_args()
