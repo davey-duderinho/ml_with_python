@@ -17,7 +17,7 @@
 #
 ##
 # Imports python modules
-from os import listdir
+from os import listdir, path
 
 
 def get_pet_labels(image_dir):
@@ -43,8 +43,16 @@ def get_pet_labels(image_dir):
     results_dic = {}
 
     for image in dir_list:
-        pet_label = image.lower().split(sep='_')
-        pet_label.pop()
-        pet_label = " ".join(pet_label)
-        results_dic[image] = [pet_label]
+
+        # for OSX and Linux filesystems, ignores hidden files that start with '.'
+        if not image.startswith('.'):
+            image_name = path.splitext(image)  # separates the file extension
+            pet_label = image_name[0].lower().split(sep='_')
+
+            # checks for and removes last part of filename if numeric
+            if not pet_label[-1].isalpha():
+                pet_label.pop()
+            pet_label = " ".join(pet_label)
+            results_dic[image] = [pet_label]
+
     return results_dic
