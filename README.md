@@ -1,6 +1,6 @@
 # ml_with_python
 #
-# Image_classifier allows immages to be classified using 3 ML models: VGG, Alexnet, Resnet.
+# Image_classifier allows images to be classified using 3 ML models: VGG, Alexnet, Resnet.
 #
 # Command line input allows the user to define image directory, classifier model and dog names. Default: 'pet_images', 'vgg', 'dognames.txt'.
 #
